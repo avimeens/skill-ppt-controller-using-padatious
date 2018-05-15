@@ -22,9 +22,10 @@ class PptControllerUsingPadatiousSkill(MycroftSkill):
 	param = {'filename':filename}
 	self.enclosure.mouth_text("Sending request to " + self.url);
 	#response = requests.get(self.url, param)
-	response.status_code = requests.codes.ok
+	response = requests.codes.ok
 	resp = {'filename' : filename}
-	if response.status_code == requests.codes.ok:
+	#if response.status_code == requests.codes.ok:
+	if response == requests.codes.ok:
         	self.speak_dialog('ppt.open', data=resp)
 	else: 
 		self.speak_dialog('ppt.filenotfound')
@@ -37,8 +38,9 @@ class PptControllerUsingPadatiousSkill(MycroftSkill):
 		purl = self.url + "/close"
 		self.enclosure.mouth_text("Sending request to " + purl);
 		#response = requests.get(purl)
-		response.status_code = requests.codes.ok
-		if response.status_code == requests.codes.ok:
+		response = requests.codes.ok
+		#if response.status_code == requests.codes.ok:
+		if response == requests.codes.ok:
         		self.speak_dialog('ppt.close')
 		else: 
 			self.speak_dialog('ppt.filenotfound')
