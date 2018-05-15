@@ -23,7 +23,7 @@ class PptControllerUsingPadatiousSkill(MycroftSkill):
 	#response = requests.get(self.url, param)
 	resp = {'filename' : filename}
 	#if response.status_code == requests.codes.ok:
-        	self.speak_dialog('ppt.open', data=resp)
+        self.speak_dialog('ppt.open', data=resp)
 	#else: 
 	#	self.speak_dialog('ppt.filenotfound')
 
