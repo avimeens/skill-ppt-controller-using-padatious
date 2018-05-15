@@ -47,6 +47,7 @@ class PptControllerUsingPadatiousSkill(MycroftSkill):
 		self.speak_dialog('ppt.filenotopen')
 	
     @intent_file_handler('ppt.prev.intent')
+    def handle_prev_slide(self, message):
 	if self.file_opened: 
 		# Send a rest request
 		purl = self.url + "/prevpage"
