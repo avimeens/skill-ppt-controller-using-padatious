@@ -1,5 +1,6 @@
-from adapt.intent import IntentBuilder
+import requests
 from mycroft import MycroftSkill, intent_file_handler
+from mycroft.util.log import getLogger
 
 
 class PptControllerUsingPadatiousSkill(MycroftSkill):
