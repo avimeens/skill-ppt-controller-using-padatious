@@ -30,7 +30,38 @@ class PptControllerUsingPadatiousSkill(MycroftSkill):
 	else: 
 		self.speak_dialog('ppt.filenotfound')
 
+    @intent_file_handler('ppt.next.intent')
+    def handle_next_slide(self, message):
+	if self.file_opened: 
+		# Send a rest request
+		nurl = self.url + "/nextpage"
+		self.enclosure.mouth_text("Sending request to " + nurl);
+		#response = requests.get(nurl)
+		response = requests.codes.ok
+		#if response.status_code == requests.codes.ok:
+		if response == requests.codes.ok:
+        		self.speak_dialog('ppt.next')
+		else: 
+			self.speak_dialog('ppt.filenotfound')
+	else: 
+		self.speak_dialog('ppt.filenotopen')
 	
+    @intent_file_handler('ppt.prev.intent')
+	if self.file_opened: 
+		# Send a rest request
+		purl = self.url + "/prevpage"
+		self.enclosure.mouth_text("Sending request to " + purl);
+		#response = requests.get(purl)
+		response = requests.codes.ok
+		#if response.status_code == requests.codes.ok:
+		if response == requests.codes.ok:
+        		self.speak_dialog('ppt.prev')
+		else: 
+			self.speak_dialog('ppt.filenotfound')
+	else: 
+		self.speak_dialog('ppt.filenotopen')
+
+
     @intent_file_handler('ppt.close.intent')
     def handle_ppt_close(self, message):
 	# Send a rest request
@@ -41,6 +72,7 @@ class PptControllerUsingPadatiousSkill(MycroftSkill):
 		response = requests.codes.ok
 		#if response.status_code == requests.codes.ok:
 		if response == requests.codes.ok:
+			self.file_opened = False
         		self.speak_dialog('ppt.close')
 		else: 
 			self.speak_dialog('ppt.filenotfound')
