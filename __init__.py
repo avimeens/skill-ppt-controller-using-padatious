@@ -16,19 +16,22 @@ class PptControllerUsingPadatiousSkill(MycroftSkill):
     @intent_file_handler('ppt.open.intent')
     def handle_ppt_open(self, message):
 	filename = message.data.get("filename")
-	self.enclosure.mouth_text("Nova opening file " + filename)
-	self.file_opened = True;
-	# Send a rest request
-	param = {'filename':filename}
-	self.enclosure.mouth_text("Sending request to " + self.url);
-	#response = requests.get(self.url, param)
-	response = requests.codes.ok
-	resp = {'filename' : filename}
-	#if response.status_code == requests.codes.ok:
-	if response == requests.codes.ok:
-        	self.speak_dialog('ppt.open', data=resp)
-	else: 
-		self.speak_dialog('ppt.filenotfound')
+	if filename is None:
+		self.speak_dialog('ppt.specifyfile')
+	else:	
+		self.enclosure.mouth_text("Nova opening file " + filename)
+		self.file_opened = True;
+		# Send a rest request
+		param = {'filename':filename}
+		self.enclosure.mouth_text("Sending request to " + self.url);
+		#response = requests.get(self.url, param)
+		response = requests.codes.ok
+		resp = {'filename' : filename}
+		#if response.status_code == requests.codes.ok:
+		if response == requests.codes.ok:
+        		self.speak_dialog('ppt.open', data=resp)
+		else: 
+			self.speak_dialog('ppt.filenotfound')
 
     @intent_file_handler('ppt.next.intent')
     def handle_next_slide(self, message):
