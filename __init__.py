@@ -24,11 +24,11 @@ class PptControllerUsingPadatiousSkill(MycroftSkill):
 		# Send a rest request
 		param = {'filename':filename}
 		self.enclosure.mouth_text("Sending request to " + self.url);
-		#response = requests.get(self.url, param)
-		response = requests.codes.ok
+		response = requests.get(self.url, param)
+		#response = requests.codes.ok
 		resp = {'filename' : filename}
-		#if response.status_code == requests.codes.ok:
-		if response == requests.codes.ok:
+		if response.status_code == requests.codes.ok:
+		#if response == requests.codes.ok:
         		self.speak_dialog('ppt.open', data=resp)
 		else: 
 			self.speak_dialog('ppt.filenotfound')
@@ -39,10 +39,10 @@ class PptControllerUsingPadatiousSkill(MycroftSkill):
 		# Send a rest request
 		nurl = self.url + "/nextpage"
 		self.enclosure.mouth_text("Sending request to " + nurl);
-		#response = requests.get(nurl)
-		response = requests.codes.ok
-		#if response.status_code == requests.codes.ok:
-		if response == requests.codes.ok:
+		response = requests.get(nurl)
+		#response = requests.codes.ok
+		if response.status_code == requests.codes.ok:
+		#if response == requests.codes.ok:
         		self.speak_dialog('ppt.next')
 		else: 
 			self.speak_dialog('ppt.filenotfound')
@@ -55,10 +55,10 @@ class PptControllerUsingPadatiousSkill(MycroftSkill):
 		# Send a rest request
 		purl = self.url + "/prevpage"
 		self.enclosure.mouth_text("Sending request to " + purl);
-		#response = requests.get(purl)
-		response = requests.codes.ok
-		#if response.status_code == requests.codes.ok:
-		if response == requests.codes.ok:
+		response = requests.get(purl)
+		#response = requests.codes.ok
+		if response.status_code == requests.codes.ok:
+		#if response == requests.codes.ok:
         		self.speak_dialog('ppt.prev')
 		else: 
 			self.speak_dialog('ppt.filenotfound')
@@ -72,10 +72,10 @@ class PptControllerUsingPadatiousSkill(MycroftSkill):
 	if self.file_opened: 
 		purl = self.url + "/close"
 		self.enclosure.mouth_text("Sending request to " + purl);
-		#response = requests.get(purl)
-		response = requests.codes.ok
-		#if response.status_code == requests.codes.ok:
-		if response == requests.codes.ok:
+		response = requests.get(purl)
+		#response = requests.codes.ok
+		if response.status_code == requests.codes.ok:
+		#if response == requests.codes.ok:
 			self.file_opened = False
         		self.speak_dialog('ppt.close')
 		else: 
